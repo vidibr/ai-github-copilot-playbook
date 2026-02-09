@@ -158,6 +158,8 @@ function getDisplayName(filePath, kind) {
     return basename.replace(".agent.md", "");
   } else if (kind === "instruction") {
     return basename.replace(".instructions.md", "");
+  } else if (kind === "hook") {
+    return basename.replace(".hook.md", "");
   } else if (kind === "skill") {
     return path.basename(filePath);
   }
@@ -217,6 +219,23 @@ function generateReadme(collection, items) {
       const description =
         item.frontmatter?.description || item.frontmatter?.name || name;
       lines.push(`| \`${name}\` | ${description} |`);
+    }
+    lines.push("");
+  }
+
+  // Hooks
+  const hooks = items.filter((item) => item.kind === "hook");
+  if (hooks.length > 0) {
+    lines.push("### Hooks");
+    lines.push("");
+    lines.push("| Hook | Description | Event |");
+    lines.push("|------|-------------|-------|");
+    for (const item of hooks) {
+      const name = getDisplayName(item.path, "hook");
+      const description =
+        item.frontmatter?.description || item.frontmatter?.name || name;
+      const event = item.frontmatter?.event || "N/A";
+      lines.push(`| \`${name}\` | ${description} | ${event} |`);
     }
     lines.push("");
   }
