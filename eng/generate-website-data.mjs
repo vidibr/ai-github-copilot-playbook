@@ -923,6 +923,7 @@ async function main() {
       prompts: prompts.length,
       instructions: instructions.length,
       skills: skills.length,
+      hooks: hooks.length,
       collections: collections.length,
       tools: tools.length,
       samples: samplesData.totalRecipes,

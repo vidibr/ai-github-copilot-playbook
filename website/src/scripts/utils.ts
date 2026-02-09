@@ -231,6 +231,8 @@ export function getResourceType(filePath: string): string {
   if (filePath.endsWith(".instructions.md")) return "instruction";
   if (filePath.includes("/skills/") && filePath.endsWith("SKILL.md"))
     return "skill";
+  if (filePath.includes("/hooks/") && filePath.endsWith("README.md"))
+    return "hook";
   if (filePath.endsWith(".collection.yml")) return "collection";
   return "unknown";
 }
@@ -244,6 +246,7 @@ export function formatResourceType(type: string): string {
     prompt: "🎯 Prompt",
     instruction: "📋 Instruction",
     skill: "⚡ Skill",
+    hook: "🪝 Hook",
     collection: "📦 Collection",
   };
   return labels[type] || type;
@@ -258,6 +261,7 @@ export function getResourceIcon(type: string): string {
     prompt: "🎯",
     instruction: "📋",
     skill: "⚡",
+    hook: "🪝",
     collection: "📦",
   };
   return icons[type] || "📄";
