@@ -1,5 +1,5 @@
 ---
-mode: 'agent'
+agent: 'agent'
 tools: ['codebase']
 description: 'Ask Copilot what files it needs to see before answering a question'
 ---

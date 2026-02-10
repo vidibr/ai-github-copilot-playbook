@@ -1,5 +1,5 @@
 ---
-mode: 'agent'
+agent: 'agent'
 tools: ['codebase', 'terminalCommand']
 description: 'Plan a multi-file refactor with proper sequencing and rollback steps'
 ---
