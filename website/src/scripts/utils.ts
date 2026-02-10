@@ -229,9 +229,9 @@ export function getResourceType(filePath: string): string {
   if (filePath.endsWith(".agent.md")) return "agent";
   if (filePath.endsWith(".prompt.md")) return "prompt";
   if (filePath.endsWith(".instructions.md")) return "instruction";
-  if (filePath.includes("/skills/") && filePath.endsWith("SKILL.md"))
+  if (/(^|\/)skills\//.test(filePath) && filePath.endsWith("SKILL.md"))
     return "skill";
-  if (filePath.includes("/hooks/") && filePath.endsWith("README.md"))
+  if (/(^|\/)hooks\//.test(filePath) && filePath.endsWith("README.md"))
     return "hook";
   if (filePath.endsWith(".collection.yml")) return "collection";
   return "unknown";
