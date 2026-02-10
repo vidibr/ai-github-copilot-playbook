@@ -503,5 +503,7 @@ export function getLastUpdatedHtml(isoDate: string | null | undefined): string {
     return `<span class="last-updated">Updated: Unknown</span>`;
   }
 
-  return `<span class="last-updated" title="${escapeHtml(fullDate)}">Updated ${relativeTime}</span>`;
+  return `<span class="last-updated" title="${escapeHtml(
+    fullDate
+  )}">Updated ${relativeTime}</span>`;
 }

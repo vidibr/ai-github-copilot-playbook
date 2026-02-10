@@ -11,18 +11,16 @@ Comprehensive logging for GitHub Copilot coding agent sessions, tracking session
 ## Overview
 
 This hook provides detailed logging of Copilot coding agent activity:
-- Session start/end times
-- User prompts and questions
-- Session duration
-- Working directory context
+- Session start/end times with working directory context
+- User prompt submission events
+- Configurable log levels
 
 ## Features
 
-- **Complete Audit Trail**: Track all Copilot interactions
+- **Session Tracking**: Log session start and end events
+- **Prompt Logging**: Record when user prompts are submitted
 - **Structured Logging**: JSON format for easy parsing
-- **Searchable History**: Review past sessions and prompts
-- **Analytics Ready**: Export data for usage analysis
-- **Privacy Aware**: Configurable to exclude sensitive data
+- **Privacy Aware**: Configurable to disable logging entirely
 
 ## Installation
 
@@ -45,15 +43,11 @@ This hook provides detailed logging of Copilot coding agent activity:
 
 ## Log Format
 
-Logs are written to `logs/copilot/session.log` in JSON format:
+Session events are written to `logs/copilot/session.log` and prompt events to `logs/copilot/prompts.log` in JSON format:
 
 ```json
-{
-  "timestamp": "2024-01-15T10:30:00Z",
-  "event": "sessionStart",
-  "sessionId": "abc123",
-  "cwd": "/workspace/project"
-}
+{"timestamp":"2024-01-15T10:30:00Z","event":"sessionStart","cwd":"/workspace/project"}
+{"timestamp":"2024-01-15T10:35:00Z","event":"sessionEnd"}
 ```
 
 ## Privacy & Security

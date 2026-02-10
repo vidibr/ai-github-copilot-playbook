@@ -19,7 +19,7 @@ The Awesome GitHub Copilot repository is a community-driven collection of custom
 ├── prompts/          # Task-specific prompts (.prompt.md files)
 ├── instructions/     # Coding standards and guidelines (.instructions.md files)
 ├── skills/           # Agent Skills folders (each with SKILL.md and optional bundled assets)
-├── hooks/            # Automated workflow hooks (.hook.md files)
+├── hooks/            # Automated workflow hooks (folders with README.md + hooks.json)
 ├── collections/      # Curated collections of resources (.md files)
 ├── docs/             # Documentation for different resource types
 ├── eng/              # Build and automation scripts
@@ -52,7 +52,7 @@ npm run skill:create -- --name <skill-name>
 
 ### Working with Agents, Prompts, Instructions, Skills, and Hooks
 
-All agent files (`*.agent.md`), prompt files (`*.prompt.md`), instruction files (`*.instructions.md`), and hook files (`*.hook.md`) must include proper markdown front matter. Agent Skills are folders containing a `SKILL.md` file with frontmatter and optional bundled assets:
+All agent files (`*.agent.md`), prompt files (`*.prompt.md`), and instruction files (`*.instructions.md`) must include proper markdown front matter. Agent Skills are folders containing a `SKILL.md` file with frontmatter and optional bundled assets. Hooks are folders containing a `README.md` with frontmatter and a `hooks.json` configuration file:
 
 #### Agent Files (*.agent.md)
 - Must have `description` field (wrapped in single quotes)

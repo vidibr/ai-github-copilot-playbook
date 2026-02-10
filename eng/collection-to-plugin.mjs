@@ -4,7 +4,11 @@ import fs from "fs";
 import path from "path";
 import readline from "readline";
 import { COLLECTIONS_DIR, ROOT_FOLDER } from "./constants.mjs";
-import { parseCollectionYaml, parseFrontmatter } from "./yaml-parser.mjs";
+import {
+  parseCollectionYaml,
+  parseFrontmatter,
+  parseHookMetadata,
+} from "./yaml-parser.mjs";
 
 const PLUGINS_DIR = path.join(ROOT_FOLDER, "plugins");
 
@@ -238,7 +242,11 @@ function generateReadme(collection, items) {
       const name = getDisplayName(item.path, "hook");
       const description =
         item.frontmatter?.description || item.frontmatter?.name || name;
-      const event = item.frontmatter?.event || "N/A";
+      // Extract events from hooks.json rather than frontmatter
+      const hookFolderPath = path.join(ROOT_FOLDER, path.dirname(item.path));
+      const hookMeta = parseHookMetadata(hookFolderPath);
+      const event =
+        hookMeta?.hooks?.length > 0 ? hookMeta.hooks.join(", ") : "N/A";
       lines.push(`| \`${name}\` | ${description} | ${event} |`);
     }
     lines.push("");
