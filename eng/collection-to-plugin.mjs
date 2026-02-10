@@ -159,6 +159,10 @@ function getDisplayName(filePath, kind) {
   } else if (kind === "instruction") {
     return basename.replace(".instructions.md", "");
   } else if (kind === "hook") {
+    // For folder-based hooks like hooks/<hook>/README.md, use the folder name.
+    if (basename.toLowerCase() === "readme.md") {
+      return path.basename(path.dirname(filePath));
+    }
     return basename.replace(".hook.md", "");
   } else if (kind === "skill") {
     return path.basename(filePath);

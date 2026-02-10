@@ -263,7 +263,7 @@ function validateCollectionItems(items) {
 
     // Validate hook-specific frontmatter
     if (item.kind === "hook") {
-      const hookValidation = validateHookFile(filePath, i + 1);
+      const hookValidation = validateHookFile(filePath);
       if (hookValidation) {
         return hookValidation;
       }
