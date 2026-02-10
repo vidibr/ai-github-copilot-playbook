@@ -243,10 +243,14 @@ function validateCollectionItems(items) {
         i + 1
       } kind is "agent" but path doesn't end with .agent.md`;
     }
-    if (item.kind === "hook" && !item.path.endsWith(".hook.md")) {
-      return `Item ${
-        i + 1
-      } kind is "hook" but path doesn't end with .hook.md`;
+    if (item.kind === "hook") {
+      const isValidHookPath =
+        item.path.startsWith("hooks/") && item.path.endsWith("/README.md");
+      if (!isValidHookPath) {
+        return `Item ${
+          i + 1
+        } kind is "hook" but path must be hooks/<hook>/README.md`;
+      }
     }
 
     // Validate agent-specific frontmatter
