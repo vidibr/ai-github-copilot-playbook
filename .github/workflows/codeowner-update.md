@@ -16,7 +16,6 @@ safe-outputs:
     base-branch: staged
     title-prefix: "[codeowner] "
     draft: false
-    github-token: ${{ secrets.GH_AW_GITHUB_TOKEN }}
   add-comment:
     max: 1
   noop:
